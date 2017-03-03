@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:id="@+id/layout_wx"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/iv_wx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/wx_normal" />
+
+        <TextView
+            android:id="@+id/tv_wx"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="WX" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_contact"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/iv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/contact_normal" />
+
+        <TextView
+            android:id="@+id/tv_contact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CONTACT" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_find"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/iv_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/find_normal" />
+
+        <TextView
+            android:id="@+id/tv_find"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FIND" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_my"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="5dp">
+
+        <ImageView
+            android:id="@+id/iv_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/my_normal" />
+
+        <TextView
+            android:id="@+id/tv_my"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MY" />
+    </LinearLayout>
+</LinearLayout>

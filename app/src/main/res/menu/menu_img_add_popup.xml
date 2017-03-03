@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="none">
+        <item
+            android:id="@+id/id_chat"
+            android:icon="@drawable/img_chat"
+            android:title="发起群聊" />
+        <item
+            android:id="@+id/id_add_friend"
+            android:icon="@drawable/img_add_friend"
+            android:title="添加朋友" />
+        <item
+            android:id="@+id/id_scan"
+            android:icon="@drawable/img_scan"
+            android:title="扫一扫" />
+        <item
+            android:id="@+id/id_help"
+            android:icon="@drawable/img_help"
+            android:title="帮助反馈" />
+
+    </group>
+
+</menu>
