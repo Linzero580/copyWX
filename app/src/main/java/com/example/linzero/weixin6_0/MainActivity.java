@@ -2,25 +2,28 @@ package com.example.linzero.weixin6_0;
 
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.view.menu.MenuPopupHelper;
 import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, AdapterView.OnItemClickListener {
     private ViewPager mViewPager;
     private FragmentPagerAdapter mAdapter;
     private List<Fragment> mFragments;
@@ -43,6 +46,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView tv_find;
     private TextView tv_my;
 
+    //侧滑菜单
+    private DrawerLayout drawer_layout;
+    private ListView list_left_drawer;
+    private ArrayList<Item> menuLists;
+    private MyAdapter<Item> myAdapter = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,6 +60,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initView();
         initEvent();
         setSelect(0);
+        drawerLayout();
+
+        drawerLayout();
+    }
+
+    private void drawerLayout() {
+        menuLists = new ArrayList<Item>();
+        menuLists.add(new Item(R.mipmap.meizu, "魅族"));
+        menuLists.add(new Item(R.mipmap.huawei, "华为"));
+        menuLists.add(new Item(R.mipmap.xiaomi, "小米"));
+        menuLists.add(new Item(R.mipmap.oppo, "OPPO"));
+        myAdapter = new MyAdapter<Item>(menuLists, R.layout.item_list) {
+            @Override
+            public void bindView(ViewHolder holder, Item obj) {
+                holder.setImageResource(R.id.img_icon, obj.getIconId());
+                holder.setText(R.id.txt_content, obj.getIconName());
+            }
+        };
+        list_left_drawer.setAdapter(myAdapter);
+        list_left_drawer.setOnItemClickListener(this);
     }
 
     private void initEvent() {
@@ -68,6 +97,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         img_add = (ImageView) findViewById(R.id.img_add);
         img_search = (ImageView) findViewById(R.id.img_search);
+
+        drawer_layout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        list_left_drawer = (ListView) findViewById(R.id.list_left_drawer);
 
         //layout
         layout_wx = (LinearLayout) findViewById(R.id.layout_wx);
@@ -228,4 +260,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         tv_my.setTextColor(Color.BLACK);
     }
 
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        ContentFragment contentFragment = new ContentFragment();
+        Bundle args = new Bundle();
+        args.putString("text", menuLists.get(position).getIconName());
+        contentFragment.setArguments(args);
+        FragmentManager fm = getSupportFragmentManager();
+        fm.beginTransaction().replace(R.id.ly_content, contentFragment).commit();
+        drawer_layout.closeDrawer(list_left_drawer);
+    }
 }
