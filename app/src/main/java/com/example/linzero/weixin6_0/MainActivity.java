@@ -61,8 +61,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         initEvent();
         setSelect(0);
         drawerLayout();
-
-        drawerLayout();
     }
 
     private void drawerLayout() {
